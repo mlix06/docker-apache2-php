@@ -29,7 +29,7 @@ CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
 
 RUN a2enmod rewrite
 
-echo "<VirtualHost *:80> \
+RUN echo "<VirtualHost *:80> \
  DocumentRoot /var/www/html \
  <Directory /var/www/html> \
   Options Indexes FollowSymLinks MultiViews \
