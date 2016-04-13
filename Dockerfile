@@ -25,8 +25,6 @@ RUN adduser --uid $USER_ID --gid $GROUP_ID --no-create-home --disabled-password 
 
 RUN chown apache:apache /var/www/html
 
-CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
-
 RUN a2enmod rewrite
 
 RUN echo "<VirtualHost *:80> \
@@ -38,4 +36,4 @@ RUN echo "<VirtualHost *:80> \
  </Directory> \
 </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
 
-
+CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
