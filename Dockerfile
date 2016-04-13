@@ -25,15 +25,15 @@ RUN adduser --uid $USER_ID --gid $GROUP_ID --no-create-home --disabled-password 
 
 RUN chown apache:apache /var/www/html
 
-#RUN echo "<VirtualHost *:80> \
-# DocumentRoot /var/www/html \
-# <Directory /var/www/html> \
-#  Options Indexes FollowSymLinks MultiViews \
-#  AllowOverride All \
-#  Require all granted \
-# </Directory> \
-#</VirtualHost>" > /etc/apache2/sites-available/000-default.conf
-
 CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
 
 RUN a2enmod rewrite
+
+RUN echo "<VirtualHost *:80> \n\
+ DocumentRoot /var/www/html \n\
+ <Directory /var/www/html> \n\
+  Options Indexes FollowSymLinks MultiViews \n\
+  AllowOverride All \n\
+  Require all granted \n\
+ </Directory> \n\
+</VirtualHost>" > /etc/apache2/sites-available/000-default.conf
