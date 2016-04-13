@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Michae LIXON <michael.lixon@gmail.com>
+MAINTAINER Michael LIXON <michael.lixon@gmail.com>
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -yq install \
@@ -25,8 +25,6 @@ RUN adduser --uid $USER_ID --gid $GROUP_ID --no-create-home --disabled-password 
 
 RUN chown apache:apache /var/www/html
 
-RUN a2enmod rewrite
-
 #RUN echo "<VirtualHost *:80> \
 # DocumentRoot /var/www/html \
 # <Directory /var/www/html> \
@@ -37,3 +35,5 @@ RUN a2enmod rewrite
 #</VirtualHost>" > /etc/apache2/sites-available/000-default.conf
 
 CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
+
+RUN a2enmod rewrite
